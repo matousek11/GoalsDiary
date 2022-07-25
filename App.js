@@ -1,4 +1,5 @@
 import { StyleSheet, View, FlatList, Button } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 import { useState } from 'react'
 import GoalInput from './components/GoalInput'
 import GoalItem from './components/GoalItem'
@@ -25,31 +26,39 @@ export default function App() {
   }
 
   return (
-    <View style={styles.appContainer}>
-      <Button
-        title="Add new goal"
-        color="#5e0acc"
-        onPress={toggleAddGoalHandler}
-      />
-      <GoalInput
-        addGoalHandler={addGoalHandler}
-        onCloseModal={toggleAddGoalHandler}
-        visible={modalIsVisible}
-      />
-      <View style={styles.goalsContainer}>
-        <FlatList
-          data={goals}
-          keyExtractor={(item) => {
-            return item.key
-          }}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem itemData={itemData} onDeleteItem={deleteGoalHandler} />
-            )
-          }}
+    <>
+      <StatusBar style="inverted" />
+      <View style={styles.appContainer}>
+        <GoalInput
+          addGoalHandler={addGoalHandler}
+          onCloseModal={toggleAddGoalHandler}
+          visible={modalIsVisible}
         />
+        <View style={styles.goalsContainer}>
+          <FlatList
+            data={goals}
+            keyExtractor={(item) => {
+              return item.key
+            }}
+            renderItem={(itemData) => {
+              return (
+                <GoalItem
+                  itemData={itemData}
+                  onDeleteItem={deleteGoalHandler}
+                />
+              )
+            }}
+          />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <Button
+            title="Add new goal"
+            color="#5e0acc"
+            onPress={toggleAddGoalHandler}
+          />
+        </View>
       </View>
-    </View>
+    </>
   )
 }
 
@@ -62,5 +71,8 @@ const styles = StyleSheet.create({
 
   goalsContainer: {
     flex: 5,
+  },
+  buttonWrapper: {
+    marginBottom: 15,
   },
 })
