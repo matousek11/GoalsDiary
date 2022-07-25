@@ -9,7 +9,7 @@
 Programming course app to learn mobile app development with React native.
 [Course](https://youtu.be/VozPNrt-LfE)
 
-![Goals diary screenshot](/course_diary.jpg)
+![Goals diary screenshot](/goals_diary.jpg)
 
 ## Technologies
 - React native
