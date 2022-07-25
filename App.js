@@ -1,8 +1,9 @@
-import { StyleSheet, View, FlatList, Button } from 'react-native'
+import { StyleSheet, View, FlatList, Button, Text } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { useState } from 'react'
 import GoalInput from './components/GoalInput'
 import GoalItem from './components/GoalItem'
+import { TouchableWithoutFeedback } from 'react-native-web'
 
 export default function App() {
   const [modalIsVisible, setModalIsVisible] = useState(false)
@@ -29,6 +30,7 @@ export default function App() {
     <>
       <StatusBar style="inverted" />
       <View style={styles.appContainer}>
+        <Text style={styles.header}>Goals note</Text>
         <GoalInput
           addGoalHandler={addGoalHandler}
           onCloseModal={toggleAddGoalHandler}
@@ -68,7 +70,11 @@ const styles = StyleSheet.create({
     paddingTop: 50,
     paddingHorizontal: 16,
   },
-
+  header: {
+    color: '#f31282',
+    fontSize: 40,
+    marginLeft: 6,
+  },
   goalsContainer: {
     flex: 5,
   },
